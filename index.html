@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="./src/main.js"></script>
 </head>
 <body>
 
@@ -16,28 +17,46 @@
         <h1>Gas tables Calculator.</h1>
 
         <div class="input-section">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <label for="gamma">γ, gamma =</label>
-            <input type="text" id="gamma" name="gamma" placeholder="e.g., 1.4">
+            <input type="number" id="gamma" name="gamma" placeholder="e.g., 1.4">
 
             <label for="relation">Relation:</label>
             <select id="relation" name="relation">
                 <option value="isentropic">Isentropic Flow</option>
-                <option value="normal_shock">Normal Shock</option>
-                <option value="fanno">Oblique Shock</option>
+                <option value="normal">Normal Shock</option>
+                <option value="oblique">Oblique Shock</option>
             </select>
-
+        
             <label for="inputVal">Input: =</label>
-            <span>
+            <span id="inputValspan">
 
+                <!-- ['Mach Number (M)','Mach Angle','P-M angle', 'Pressure Ratio (P/P0)', 'Temperature Ratio (T/T0)', 'Density Ratio (ρ/ρ0)', 'Area Ratio (A/A*)',]; -->
 
-                <select id="inputVal" name="inputVal">
-                <option value="mach">Mach No (M)</option>
-                <option value="pressure_ratio">Pressure Ratio (P2/P1)</option>
-                <option value="temperature_ratio">Temperature Ratio (T2/T1)</option>
-                <option value="density_ratio">Density Ratio (ρ2/ρ1)</option>
-                <option value="area_ratio">Area Ratio (A/A*)</option>
-            </select>
-                <input type="text" id="mach_no" name="mach_no" placeholder="e.g., 0.5">
+                <select class="inputVal" id="inputVal" name="inputVal">
+                    <option value="mach_number_m">Mach Number (M)</option>
+                    <option value="mach_angle">Mach Angle (θ)</option>
+                    <option value="p_m_angle">P-M Angle (φ)</option>
+                    <option value="pressure_ratio">Pressure Ratio (P/P0)</option>
+                    <option value="temperature_ratio">Temperature Ratio (T/T0)</option>
+                    <option value="density_ratio">Density Ratio (ρ/ρ0)</option>
+                    <option value="area_ratio">Area Ratio (A/A*)</option>
+                </select>
+                <input type="number" class="inputVal" id="inputVal" name="inputVal" placeholder="e.g., 0.5">
             </span>
         </div>
         

@@ -58,7 +58,7 @@ h1 {
 }
 
 /* Styling for text inputs and select dropdown */
-.input-section input[type="text"],
+.input-section input[type="number"],
 .input-section select {
     width: 40%;
     padding: 8px 12px;
@@ -70,7 +70,7 @@ h1 {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.input-section input[type="text"]:focus,
+.input-section input[type="number"]:focus,
 .input-section select:focus {
     outline: none;
     border-color: var(--border-color);
