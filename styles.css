@@ -1,0 +1,137 @@
+
+/* --- Base Styles --- */
+:root {
+    --border-color: #5a9a9c; /* The teal/blue-green from the drawing */
+    --grid-color: #d8c4e4;   /* The light purple for the grid lines */
+    --text-color: #333;
+    --bg-color: #f7f9fc;
+    --main-bg: #ffffff;
+}
+
+body {
+    font-family: 'Kalam', cursive, sans-serif; /* A font that feels like neat handwriting for labels */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Main Calculator Container --- */
+.calculator-container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--main-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px 35px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+                            
+/* --- Header Title --- */
+h1 {
+    font-family: 'Caveat', cursive; /* The more flowy, cursive font for the main title */
+    font-size: 3rem;
+    color: var(--text-color);
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+/* --- Input Section --- */
+.input-section {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label column sized to content, input takes the rest */
+    gap: 15px 10px; /* 15px row gap, 10px column gap */
+    align-items: center;
+    
+    margin-bottom: 30px;
+}
+
+.input-section label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Styling for text inputs and select dropdown */
+.input-section input[type="text"],
+.input-section select {
+    width: 40%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace; /* Using a monospace font for numerical inputs */
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-section input[type="text"]:focus,
+.input-section select:focus {
+    outline: none;
+    border-color: var(--border-color);
+    box-shadow: 0 0 5px rgba(90, 154, 156, 0.5);
+}
+
+
+
+/* Calculator Button */
+#calculateBtn {
+    background-color: var(--border-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 15px;
+    margin: 5px 0 20px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#calculateBtn:hover {
+    background-color: #487f80;
+}
+
+#calculateBtn:active {
+    background-color: #366666;
+}
+
+/* --- Table/Output Area --- */
+.output-area {
+    height: 300px;
+    border: 2px solid #b0b0b0;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for pseudo-elements if used, good practice */
+
+    /* Creating the grid background with CSS gradients */
+    background-color: #fff;
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px);
+    background-size: 25px 25px; /* Size of one grid square */
+}
+
+.output-area h2 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(3rem, 15vw, 6rem); /* Responsive font size */
+    color: var(--text-color);
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight white background to make text more readable */
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
