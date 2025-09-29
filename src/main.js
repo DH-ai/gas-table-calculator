@@ -13,7 +13,9 @@ let oblique_shock_val = ['Mach Number (M2)', 'Turn Angle (θ)', 'Wave Angle (β)
             // inputSection.innerHTML = Modified_INPUT_SECTION_HTML;
             let optionsHTML = '';
             oblique_shock_val.forEach(val => {
-                let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                var _a;
+                let value = (_a = val.toLowerCase()
+                    .match(/.+?(?=\()/g)) === null || _a === void 0 ? void 0 : _a[0].replace(/\s+\S*$/, "").replace(/ /g, '_');
                 optionsHTML += `<option value="${value}">${val}</option>`;
             });
             inputSection.innerHTML = `<div>
@@ -34,7 +36,9 @@ let oblique_shock_val = ['Mach Number (M2)', 'Turn Angle (θ)', 'Wave Angle (β)
             if (relation === 'isentropic') {
                 let optionsHTML = '';
                 insentropic_val.forEach(val => {
-                    let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                    var _a;
+                    let value = (_a = val.toLowerCase()
+                        .match(/.+?(?=\()/g)) === null || _a === void 0 ? void 0 : _a[0].replace(/\s+\S*$/, "").replace(/ /g, '_');
                     optionsHTML += `<option value="${value}">${val}</option>`;
                 });
                 inputSection.innerHTML = `<select class="inputVal"  id="inputVal" name="inputVal">${optionsHTML}</select>
@@ -43,7 +47,9 @@ let oblique_shock_val = ['Mach Number (M2)', 'Turn Angle (θ)', 'Wave Angle (β)
             else if (relation === 'normal') {
                 let optionsHTML = '';
                 normal_shock_val.forEach(val => {
-                    let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                    var _a;
+                    let value = (_a = val.toLowerCase()
+                        .match(/.+?(?=\()/g)) === null || _a === void 0 ? void 0 : _a[0].replace(/\s+\S*$/, "").replace(/ /g, '_');
                     optionsHTML += `<option value="${value}">${val}</option>`;
                 });
                 inputSection.innerHTML = `<select class="inputVal"  id="inputVal" name="inputVal">${optionsHTML}</select>
@@ -56,14 +62,12 @@ let oblique_shock_val = ['Mach Number (M2)', 'Turn Angle (θ)', 'Wave Angle (β)
 (_b = document.getElementById('calculateBtn')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
     const gamma = parseFloat(document.getElementById('gamma').value);
     const relation = document.getElementById('relation').value;
-    const inputVal = document.querySelectorAll('.inputVal');
-    console.log(`γ: ${gamma}, Relation: ${relation}, Input Value: ${inputVal.forEach(input => console.log(input.value))}`);
-    // calculateGasTables(gamma, relation, inputVal);
+    const inputVal = Array.from(document.querySelectorAll('.inputVal')).map(input => input.value);
+    console.log(inputVal);
+    calculateGasTables(gamma, relation, inputVal);
 });
+const calculateGasTables = (gamma, relation, inputVal) => {
+    console.log(`γ: ${gamma}, Relation: ${relation}, Input Value: ${inputVal}`);
+};
 export {};
-// const calculateGasTables = (gamma: number, relation: string, inputVal: string) => {
-//     // Perform calculations based on the inputs
-//     console.log(`Calculating gas tables with γ=${gamma}, relation=${relation}, inputVal=${inputVal}`);
-// };
-// calculateGasTables(1.4, 'mach_no', '0.5');
 //# sourceMappingURL=main.js.map

@@ -17,7 +17,10 @@ document.getElementById('relation')?.addEventListener('change', () => {
             // inputSection.innerHTML = Modified_INPUT_SECTION_HTML;
             let optionsHTML = '';
             oblique_shock_val.forEach(val => {
-                let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                let value = val.toLowerCase()
+                .match(/.+?(?=\()/g)?.[0]
+                .replace(/\s+\S*$/, "")
+                .replace(/ /g, '_');
                 optionsHTML += `<option value="${value}">${val}</option>`;
             });
             inputSection.innerHTML = `<div>
@@ -37,15 +40,22 @@ document.getElementById('relation')?.addEventListener('change', () => {
             if (relation === 'isentropic') {
                 let optionsHTML = '';
                 insentropic_val.forEach(val => {
-                    let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                    let value = val.toLowerCase()
+                    .match(/.+?(?=\()/g)?.[0]
+                    .replace(/\s+\S*$/, "")
+                    .replace(/ /g, '_');
                     optionsHTML += `<option value="${value}">${val}</option>`;
+
                 });
                 inputSection.innerHTML = `<select class="inputVal"  id="inputVal" name="inputVal">${optionsHTML}</select>
                 <input type="number" id="inputVal" name="inputVal" placeholder="e.g., 0.5">`;
             } else if (relation === 'normal') {
                 let optionsHTML = '';
                 normal_shock_val.forEach(val => {
-                    let value = val.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_]/g, '');
+                    let value = val.toLowerCase()
+                    .match(/.+?(?=\()/g)?.[0]
+                    .replace(/\s+\S*$/, "")
+                    .replace(/ /g, '_');
                     optionsHTML += `<option value="${value}">${val}</option>`;
                 });
                 inputSection.innerHTML = `<select class="inputVal"  id="inputVal" name="inputVal">${optionsHTML}</select>
@@ -64,15 +74,15 @@ document.getElementById('relation')?.addEventListener('change', () => {
 document.getElementById('calculateBtn')?.addEventListener('click', () => {
     const gamma = parseFloat((document.getElementById('gamma') as HTMLSelectElement).value);
     const relation = (document.getElementById('relation') as HTMLSelectElement).value;
-    const inputVal = document.querySelectorAll('.inputVal');
-    console.log(`γ: ${gamma}, Relation: ${relation}, Input Value: ${inputVal.forEach(input => console.log((input as HTMLInputElement).value))}`);
-    // calculateGasTables(gamma, relation, inputVal);
+    const inputVal = Array.from(document.querySelectorAll('.inputVal')).map(input => (input as HTMLInputElement).value);
+    console.log(inputVal)
+    calculateGasTables(gamma, relation, inputVal);
 }
 );
 
-// const calculateGasTables = (gamma: number, relation: string, inputVal: string) => {
-//     // Perform calculations based on the inputs
-//     console.log(`Calculating gas tables with γ=${gamma}, relation=${relation}, inputVal=${inputVal}`);
-// };
-// calculateGasTables(1.4, 'mach_no', '0.5');
+const calculateGasTables = (gamma: number, relation: string, inputVal: string[]) => {
+    
+    console.log(`γ: ${gamma}, Relation: ${relation}, Input Value: ${inputVal}`);
+
+}
 
